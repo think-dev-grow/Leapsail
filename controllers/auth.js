@@ -6,6 +6,12 @@ const crypto = require("crypto");
 
 const nodemailer = require("nodemailer");
 
+const serviceId = "VAc20e3a918c7c195e8a128bbd6884a482";
+const accountSid = "ACce89c60ee42315c20e97d347bb5564f9";
+const authToken = "453f39d69c63756b17b456815c278723";
+
+const client = require("twilio")(accountSid, authToken);
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   secure: false,
@@ -84,6 +90,27 @@ const verifyEmail = async (req, res, next) => {
   }
 };
 
+const sendOTP = async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  if (!user) return next(handleError(404, "User does not exist."));
+
+  try {
+    client.verify.v2
+      .services(serviceId)
+      .verifications.create({ to: "+234" + "8154963477", channel: "sms" })
+      .then((verification) => {
+        console.log(verification.status);
+        return res.status(200).json(verification);
+      })
+      .catch((error) => {
+        return res.status(400).json(error);
+      });
+  } catch (error) {
+    console.log(error);
+    next(handleError(500, "Oops, something went wrong"));
+  }
+};
+
 const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -116,4 +143,4 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, verifyEmail, getUsers };
+module.exports = { register, login, verifyEmail, getUsers, sendOTP };

@@ -5,6 +5,8 @@ const {
   resetPassword2,
 } = require("../controllers/user.js");
 
+// VrSZl5_xWFmAKJwEqxwuQij6E4OhKhzpK4acagQD
+
 const router = express.Router();
 
 router.post("/forgot-password", forgetPassword);
