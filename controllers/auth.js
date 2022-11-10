@@ -44,7 +44,8 @@ const register = async (req, res, next) => {
       to: user.email,
       subject: "Leapsail Email verification",
       html: `<h2>${data.firstname}, Thanks for registering</h2>
-        <h4>Please verify your email to continue</h4>
+        <h4>Please click the link to verify your account</h4>
+        <a href="https://leapsail-app.herokuapp.com/leapsail/api/auth/verify-email?token=${data.emailToken}">Verify your Email</a>
        `,
     };
 
@@ -76,8 +77,8 @@ const verifyEmail = async (req, res, next) => {
       user.emailToken = null;
 
       const verifiedUser = await user.save();
-      res.send(verifiedUser);
-      //   res.redirect(`https://leapsail-web.netlify.app/otp/${user._id}`);
+      //   res.send(verifiedUser);
+      res.redirect("https://www.google.com/");
     }
   } catch (error) {
     console.log(error);
