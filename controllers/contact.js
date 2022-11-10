@@ -7,7 +7,8 @@ const addContact = async (req, res, next) => {
     const userContact = await contactInfo.save();
     res.status(200).json(userContact);
   } catch (error) {
-    next(error);
+    console.log(error);
+    next(handleError(500, "Oops something went wrong"));
   }
 };
 
