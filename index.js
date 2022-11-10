@@ -10,6 +10,7 @@ const cors = require("cors");
 app.use(cors());
 
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
 
 const connectDB = () => {
   mongoose
@@ -28,6 +29,7 @@ const connectDB = () => {
 app.use(express.json());
 
 app.use("/leapsail/api/auth", authRoute);
+app.use("/leapsail/api/user", userRoute);
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
