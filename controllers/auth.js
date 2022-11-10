@@ -37,8 +37,6 @@ const register = async (req, res, next) => {
 
     const data = await user.save();
 
-    // <a href="https://leapsail-app.herokuapp.com/leapsail/api/auth/verify-email?token=${user.emailToken}">Verify your Email</a>
-
     const mail = {
       from: ' "Verify your email" <leapsailafrica@gmail.com>',
       to: user.email,
