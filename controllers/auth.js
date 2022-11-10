@@ -76,7 +76,7 @@ const verifyEmail = async (req, res, next) => {
 
       const verifiedUser = await user.save();
       //   res.send(verifiedUser);
-      res.redirect("https://www.google.com/");
+      res.redirect("https://leapsail-web.netlify.app/login");
     }
   } catch (error) {
     console.log(error);
