@@ -103,7 +103,7 @@ const login = async (req, res, next) => {
     res.status(200).json(others);
   } catch (error) {
     console.log(error);
-    next(handleError(500, "Oops something went wrong"));
+    next(handleError(500, "Oops, something went wrong"));
   }
 };
 
@@ -113,7 +113,7 @@ const getUsers = async (req, res, next) => {
     res.status(200).json(users);
   } catch (error) {
     console.log(error);
-    next(handleError(500, "Oops something went wrong"));
+    next(handleError(500, "Oops, something went wrong"));
   }
 };
 
