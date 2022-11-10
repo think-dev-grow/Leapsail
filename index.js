@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const cors = require("cors");
+app.use(cors());
+
 const authRoute = require("./routes/auth");
 
 const connectDB = () => {
