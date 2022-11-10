@@ -15,7 +15,7 @@ const connectDB = () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("DB connected");
+      console.log("DB connected.");
     })
     .catch((error) => {
       console.log(error);
@@ -39,5 +39,5 @@ app.use((err, req, res, next) => {
 
 app.listen(8800, () => {
   connectDB();
-  console.log("server running");
+  console.log("server running.");
 });
