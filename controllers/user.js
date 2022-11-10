@@ -80,7 +80,8 @@ const resetPassword2 = async (req, res, next) => {
       .status(200)
       .json({ msg: "User password has been rest", data: userData });
   } catch (error) {
-    next(error);
+    console.log(error);
+    next(handleError(500, "Oops, something went wrong"));
   }
 };
 
