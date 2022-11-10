@@ -91,7 +91,7 @@ const login = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user) return next(handleError(404, "User does not exist."));
 
-    // if (!user.verified) return next(handleError(404, "This email is Invalid."));
+    if (!user.verified) return next(handleError(404, "This email is Invalid."));
 
     const confirmPassword = await bcrypt.compare(
       req.body.password,
