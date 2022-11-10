@@ -11,6 +11,7 @@ app.use(cors());
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const contactRoute = require("./routes/contact");
 
 const connectDB = () => {
   mongoose
@@ -30,6 +31,7 @@ app.use(express.json());
 
 app.use("/leapsail/api/auth", authRoute);
 app.use("/leapsail/api/user", userRoute);
+app.use("/leapsail/api/contact", contactRoute);
 
 app.use((err, req, res, next) => {
   const status = err.status || 500;
